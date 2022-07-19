@@ -4,12 +4,12 @@ const dotenv = require("dotenv").config();
 const PORT = process.env.PORT;
 const app = express();
 
-// middleware
+// Middlewares
 app.use(express.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-	res.status(200).send({ title: "Succesfully setup server" });
-});
+// Routes
+app.use("/", require("./routes/userRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
 
 app.listen(PORT, () => console.log("Server is running on", PORT));
